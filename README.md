@@ -7,6 +7,8 @@ Clone/Download this repository on your server
  
 ### Prerequisites
 * Apache Server
+* PHP Version 5.6.*
+* MySQL Version 5.6
 * [rios-mini-library](https://github.com/ariesbrylle-bms/rios-mini-library.git) - AngularJS for rios-mini-library-api
 
 ### Installation
