@@ -44,7 +44,7 @@ class Rest_model extends CI_Model {
                 $this->db->where('id',$user_id);
                 $this->db->update('users', array('last_login' => $last_login));
 
-                $this->db->insert('users_authentication', array('users_id' => $user_id,'token' => $token ,'expired_at' => $expired_at));
+                $this->db->insert('users_authentication', array('users_id' => $user_id,'token' => $token ,'expired_at' => $expired_at, 'updated_at' => $last_login, 'created_at' => $last_login));
 
                 if ($this->db->trans_status() === FALSE){
                   $this->db->trans_rollback();
