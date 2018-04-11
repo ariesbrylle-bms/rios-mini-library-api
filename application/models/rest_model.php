@@ -6,7 +6,7 @@ class Rest_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->api_service = API_SERVICE;
-    	$this->auth_key = AUTH_KEY;
+    		$this->auth_key = AUTH_KEY;
 	}
 
     /* 
@@ -34,7 +34,7 @@ class Rest_model extends CI_Model {
     	$q = $this->db->query("select id, password from users where username = ?", $username);
 
     	if ($q->num_rows() > 0){
-    		if (hash_equals($q->row()->password, crypt($password, $q->row()->password))){
+    		if ($q->row()->password ==  crypt($password, $q->row()->password)){
     			$last_login = date('Y-m-d H:i:s');
     			$token = crypt(substr(md5(rand()), 0, 7),'');
                 $expired_at = date("Y-m-d H:i:s", strtotime('+12 hours'));
@@ -72,7 +72,7 @@ class Rest_model extends CI_Model {
         $q = $this->db->query("select id, password from users where id = ?", $l_users_id);
 
         if ($q->num_rows() > 0){
-            if (hash_equals($q->row()->password, crypt($p_password, $q->row()->password))){
+            if ($q->row()->password == crypt($p_password, $q->row()->password)){
                 $user_id = $q->row()->id;
 
                 $this->db->where('id',$user_id);
